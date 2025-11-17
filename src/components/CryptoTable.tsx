@@ -20,19 +20,21 @@ function formatCurrency(value: number): string {
 
 export function CryptoTable({ assets }: Props) {
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/40 shadow-lg shadow-slate-900/40">
+    <div className="overflow-hidden rounded-xl border border-forest-main/30 bg-slate-grey/40 shadow-lg shadow-slate-dark/40">
       <div className="max-h-[70vh] overflow-auto">
         <table className="min-w-full text-left text-sm">
-          <thead className="sticky top-0 bg-slate-950/90 backdrop-blur">
-            <tr className="border-b border-slate-800/80">
-              <th className="px-4 py-3 font-medium text-slate-400">#</th>
-              <th className="px-4 py-3 font-medium text-slate-400">Name</th>
-              <th className="px-4 py-3 font-medium text-slate-400">Price</th>
-              <th className="px-4 py-3 font-medium text-slate-400">24h</th>
-              <th className="px-4 py-3 font-medium text-slate-400">
+          <thead className="sticky top-0 bg-slate-dark/90 backdrop-blur">
+            <tr className="border-b border-forest-main/30">
+              <th className="px-4 py-3 font-medium text-forest-accent">#</th>
+              <th className="px-4 py-3 font-medium text-forest-accent">Name</th>
+              <th className="px-4 py-3 font-medium text-forest-accent">
+                Price
+              </th>
+              <th className="px-4 py-3 font-medium text-forest-accent">24h</th>
+              <th className="px-4 py-3 font-medium text-forest-accent">
                 Market Cap
               </th>
-              <th className="px-4 py-3 font-medium text-slate-400">
+              <th className="px-4 py-3 font-medium text-forest-accent">
                 Volume 24h
               </th>
             </tr>
@@ -41,9 +43,9 @@ export function CryptoTable({ assets }: Props) {
             {assets.map((asset, idx) => (
               <tr
                 key={asset.id}
-                className="border-b border-slate-800/60 hover:bg-slate-900/60 transition-colors"
+                className="border-b border-forest-main/20 hover:bg-slate-grey/60 transition-colors"
               >
-                <td className="px-4 py-3 text-slate-500">{idx + 1}</td>
+                <td className="px-4 py-3 text-mist/50">{idx + 1}</td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
                     <Image
@@ -54,17 +56,17 @@ export function CryptoTable({ assets }: Props) {
                       className="rounded-full"
                     />
                     <div className="flex flex-col">
-                      <span className="text-sm font-medium text-slate-100">
+                      <span className="text-sm font-medium text-mist">
                         {asset.name}
                       </span>
-                      <span className="text-xs uppercase tracking-wide text-slate-500">
+                      <span className="text-xs uppercase tracking-wide text-mist/50">
                         {asset.symbol}
                       </span>
                     </div>
                   </div>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="font-mono text-sm">
+                  <span className="font-mono text-sm text-mist">
                     {formatCurrency(asset.current_price)}
                   </span>
                 </td>
@@ -72,12 +74,12 @@ export function CryptoTable({ assets }: Props) {
                   <PriceChangeBadge value={asset.price_change_percentage_24h} />
                 </td>
                 <td className="px-4 py-3">
-                  <span className="font-mono text-xs">
+                  <span className="font-mono text-xs text-mist/80">
                     {formatCurrency(asset.market_cap)}
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="font-mono text-xs">
+                  <span className="font-mono text-xs text-mist/80">
                     {formatCurrency(asset.total_volume)}
                   </span>
                 </td>
