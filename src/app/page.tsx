@@ -1,0 +1,61 @@
+// Main dashboard page - Server Component with SSR
+
+import { fetchTopMarketCoins, type CryptoAsset } from "@/lib/coingecko";
+import { CryptoTable } from "@/components/CryptoTable";
+
+export const metadata = {
+  title: "ForestCoin - Crypto Prices Dashboard",
+  description: "Real-time cryptocurrency prices with server-side rendering",
+};
+
+export default async function Page() {
+  let assets: CryptoAsset[] = [];
+  let error: string | null = null;
+
+  try {
+    assets = await fetchTopMarketCoins(50);
+  } catch (err) {
+    error = err instanceof Error ? err.message : "Failed to load data";
+    console.error("Error fetching crypto data:", err);
+  }
+
+  if (error) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-slate-100">
+        <section className="mx-auto max-w-6xl px-4 py-8">
+          <h1 className="text-2xl font-semibold">
+            ForestCoin - Crypto Prices Dashboard
+          </h1>
+          <div className="mt-8 rounded-xl border border-rose-900/50 bg-rose-950/20 p-6">
+            <p className="text-sm text-rose-300">
+              Failed to load cryptocurrency data. Please try again later.
+            </p>
+            <p className="mt-2 text-xs text-rose-400/70">{error}</p>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  return (
+    <main className="min-h-screen bg-slate-950 text-slate-100">
+      <section className="mx-auto max-w-6xl px-4 py-8">
+        <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
+          <div>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              ForestCoin Dashboard
+            </h1>
+            <p className="mt-1 text-sm text-slate-400">
+              Server-side rendered. Data revalidated every 60 seconds.
+            </p>
+          </div>
+          <span className="rounded-full bg-slate-900 px-3 py-1 text-xs text-slate-400 w-fit">
+            SSR · revalidate:60
+          </span>
+        </header>
+
+        <CryptoTable assets={assets} />
+      </section>
+    </main>
+  );
+}
