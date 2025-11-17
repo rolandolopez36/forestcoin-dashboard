@@ -1,65 +1,65 @@
 # ForestCoin Dashboard
 
-> **ForestCoin** es un dashboard SSR de precios de criptomonedas construido con Next.js 16, TailwindCSS y TypeScript. Usa la API de CoinGecko y revalidación cada 60 segundos para obtener datos frescos. Minimalista, rápido y verde como un bosque.
+> **ForestCoin** is a SSR cryptocurrency prices dashboard built with Next.js 16, TailwindCSS and TypeScript. Uses CoinGecko API and revalidation every 60 seconds to get fresh data. Minimalist, fast and green as a forest.
 
-## Características
+## Features
 
-- 🌲 **Server-Side Rendering (SSR)** con Next.js 16 App Router
-- 🔄 **ISR (Incremental Static Regeneration)** con revalidación cada 60 segundos
-- 🎨 **Diseño ForestCoin** con tema verde bosque y tipografía moderna
-- 📊 **Datos en tiempo real** desde CoinGecko API
-- ⚡ **TypeScript** para type-safety completo
-- 🎯 **Tailwind CSS 3** para estilos responsivos
+- 🌲 **Server-Side Rendering (SSR)** with Next.js 16 App Router
+- 🔄 **ISR (Incremental Static Regeneration)** with revalidation every 60 seconds
+- 🎨 **ForestCoin Design** with forest green theme and modern typography
+- 📊 **Real-time data** from CoinGecko API
+- ⚡ **TypeScript** for complete type-safety
+- 🎯 **Tailwind CSS 3** for responsive styling
 
-## Tecnologías
+## Technologies
 
-- **Next.js 16** - Framework React con SSR
+- **Next.js 16** - React Framework with SSR
 - **TypeScript 5.9** - Type-safety
 - **Tailwind CSS 3.4** - Utility-first CSS
-- **pnpm** - Gestor de paquetes rápido y eficiente
-- **CoinGecko API** - Datos de criptomonedas
+- **pnpm** - Fast and efficient package manager
+- **CoinGecko API** - Cryptocurrency data
 
-## Instalación
+## Installation
 
 ```bash
-# Instalar dependencias
+# Install dependencies
 pnpm install
 
-# Iniciar servidor de desarrollo
+# Start development server
 pnpm dev
 
-# Abrir http://localhost:3000 en tu navegador
+# Open http://localhost:3000 in your browser
 ```
 
-## Scripts Disponibles
+## Available Scripts
 
 ```bash
-pnpm dev          # Servidor de desarrollo en http://localhost:3000
-pnpm build        # Build de producción
-pnpm start        # Iniciar servidor de producción
-pnpm lint         # Ejecutar ESLint
+pnpm dev          # Development server at http://localhost:3000
+pnpm build        # Production build
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
 ```
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 forestcoin-dashboard/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx      # Layout raíz con metadata
-│   │   ├── page.tsx        # Página principal (Server Component)
-│   │   └── globals.css     # Estilos globales + Tailwind
+│   │   ├── layout.tsx      # Root layout with metadata
+│   │   ├── page.tsx        # Main page (Server Component)
+│   │   └── globals.css     # Global styles + Tailwind
 │   ├── lib/
-│   │   └── coingecko.ts    # Cliente API de CoinGecko
+│   │   └── coingecko.ts    # CoinGecko API client
 │   └── components/
-│       ├── CryptoTable.tsx      # Tabla principal de criptos
-│       └── PriceChangeBadge.tsx # Badge de cambio de precio 24h
-├── public/                 # Archivos estáticos
-├── tailwind.config.ts      # Configuración de Tailwind con tema ForestCoin
-└── tsconfig.json          # Configuración de TypeScript
+│       ├── CryptoTable.tsx      # Main crypto table
+│       └── PriceChangeBadge.tsx # 24h price change badge
+├── public/                 # Static files
+├── tailwind.config.ts      # Tailwind configuration with ForestCoin theme
+└── tsconfig.json          # TypeScript configuration
 ```
 
-## Paleta de Colores ForestCoin
+## ForestCoin Color Palette
 
 - **Forest Green (Main)**: `#0B4F3F`
 - **Leaf Green (Accent)**: `#3BB273`
@@ -69,36 +69,37 @@ forestcoin-dashboard/
 - **Positive Green**: `#4ADE80`
 - **Negative Red**: `#EF4444`
 
-## Tipografía
+## Typography
 
-- **UI**: Inter - Limpia y moderna
-- **Números**: JetBrains Mono - Para precios y valores técnicos
+- **UI**: Inter - Clean and modern
+- **Numbers**: JetBrains Mono - For prices and technical values
 
-## Cómo Funciona
+## How It Works
 
-1. **Server Components**: La página principal (`page.tsx`) es un Server Component async que fetch datos directamente
-2. **ISR**: Usa `next: { revalidate: 60 }` en el fetch para cachear y revalidar cada 60 segundos
-3. **Sin Estado Cliente**: No usa `useState` ni `useEffect` - todo SSR puro
-4. **Manejo de Errores**: Try/catch en el servidor con UI de fallback
+1. **Server Components**: The main page (`page.tsx`) is an async Server Component that fetches data directly
+2. **ISR**: Uses `next: { revalidate: 60 }` in the fetch to cache and revalidate every 60 seconds
+3. **No Client State**: Doesn't use `useState` or `useEffect` - pure SSR
+4. **Error Handling**: Try/catch on the server with fallback UI
 
-## Dependencias Instaladas
+## Installed Dependencies
 
-Todas las dependencias son oficiales y seguras:
+All dependencies are official and secure:
 
 - `next`, `react`, `react-dom` - Framework (Vercel/Meta)
 - `typescript`, `@types/*` - Type definitions (Microsoft/DefinitelyTyped)
-- `tailwindcss`, `postcss`, `autoprefixer` - Estilos (Tailwind Labs)
+- `tailwindcss`, `postcss`, `autoprefixer` - Styles (Tailwind Labs)
 - `eslint`, `eslint-config-next` - Linting (Next.js)
 
-## Verificación de Seguridad
+## Security Verification
 
-Este proyecto fue creado con pnpm usando solo dependencias oficiales verificadas:
-- ✅ Next.js oficial de Vercel
-- ✅ React oficial de Meta
-- ✅ TypeScript oficial de Microsoft
-- ✅ Tailwind CSS oficial
-- ✅ Sin dependencias de terceros no verificadas
+This project was created with pnpm using only verified official dependencies:
 
-## Licencia
+- ✅ Official Next.js from Vercel
+- ✅ Official React from Meta
+- ✅ Official TypeScript from Microsoft
+- ✅ Official Tailwind CSS
+- ✅ No unverified third-party dependencies
+
+## License
 
 ISC
