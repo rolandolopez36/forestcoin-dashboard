@@ -58,48 +58,65 @@ export function CryptoTable({ assets }: Props) {
               <th className="px-4 py-3 font-medium text-mist/50">Volume 24h</th>
             </tr>
           </thead>
+          {/* Table body containing all the cryptocurrency rows */}
           <tbody>
+            {/* Loop through each cryptocurrency in the assets array and create a row */}
             {assets.map((asset, idx) => (
               <tr
-                key={asset.id}
-                className="border-b border-forest-main/20 hover:bg-slate-grey/60 transition-colors"
+                key={asset.id} // Unique identifier for React to track this row
+                className="border-b border-forest-main/20 hover:bg-slate-grey/60 transition-colors" // Border bottom, changes color on hover with smooth transition
               >
+                {/* First column: Ranking number (1, 2, 3...) */}
                 <td className="px-4 py-3 text-mist/50">{idx + 1}</td>
+                
+                {/* Second column: Cryptocurrency name with icon */}
                 <td className="px-4 py-3">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3"> {/* Container to align icon and text horizontally */}
+                    {/* Cryptocurrency logo image - 24x24 pixels, circular */}
                     <Image
-                      src={asset.image}
-                      alt={asset.name}
-                      width={24}
-                      height={24}
-                      className="rounded-full"
+                      src={asset.image} // URL of the crypto logo
+                      alt={asset.name} // Alternative text for accessibility
+                      width={24} // Image width in pixels
+                      height={24} // Image height in pixels
+                      className="rounded-full" // Makes the image circular
                     />
+                    {/* Container for name and symbol stacked vertically */}
                     <div className="flex flex-col">
+                      {/* Full name (e.g., "Bitcoin") */}
                       <span className="text-sm font-medium text-mist">
                         {asset.name}
                       </span>
+                      {/* Symbol in uppercase (e.g., "BTC") - smaller and lighter color */}
                       <span className="text-xs uppercase tracking-wide text-mist/50">
                         {asset.symbol}
                       </span>
                     </div>
                   </div>
                 </td>
+                
+                {/* Third column: Current price in USD */}
                 <td className="px-4 py-3">
-                  <span className="font-mono text-sm text-mist">
-                    {formatCurrency(asset.current_price)}
+                  <span className="font-mono text-sm text-mist"> {/* Monospace font for numbers alignment */}
+                    {formatCurrency(asset.current_price)} {/* Formatted price (e.g., "$45,123.45") */}
                   </span>
                 </td>
+                
+                {/* Fourth column: 24-hour price change percentage with color badge */}
                 <td className="px-4 py-3">
-                  <PriceChangeBadge value={asset.price_change_percentage_24h} />
+                  <PriceChangeBadge value={asset.price_change_percentage_24h} /> {/* Green badge for positive, red for negative */}
                 </td>
+                
+                {/* Fifth column: Total market capitalization */}
                 <td className="px-4 py-3">
-                  <span className="font-mono text-xs text-mist/80">
-                    {formatCurrency(asset.market_cap)}
+                  <span className="font-mono text-xs text-mist/80"> {/* Monospace font, smaller size */}
+                    {formatCurrency(asset.market_cap)} {/* Formatted market cap (e.g., "$850.23B") */}
                   </span>
                 </td>
+                
+                {/* Sixth column: 24-hour trading volume */}
                 <td className="px-4 py-3">
-                  <span className="font-mono text-xs text-mist/80">
-                    {formatCurrency(asset.total_volume)}
+                  <span className="font-mono text-xs text-mist/80"> {/* Monospace font, smaller size */}
+                    {formatCurrency(asset.total_volume)} {/* Formatted volume (e.g., "$23.45B") */}
                   </span>
                 </td>
               </tr>
