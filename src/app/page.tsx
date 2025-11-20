@@ -2,6 +2,7 @@
 
 import { fetchTopMarketCoins, type CryptoAsset } from "@/lib/coingecko";
 import { CryptoTable } from "@/components/CryptoTable";
+import { ForestCoinLogo } from "@/components/ForestCoinLogo";
 
 export const metadata = {
   title: "ForestCoin - Crypto Prices Dashboard",
@@ -40,18 +41,24 @@ export default async function Page() {
   return (
     <main className="min-h-screen bg-slate-dark text-mist">
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-forest-accent">
-              ForestCoin Dashboard
+        <header className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <ForestCoinLogo className="w-10 h-10" />
+            <h1 className="text-3xl font-semibold tracking-tight text-white">
+              ForestCoin
             </h1>
-            <p className="mt-1 text-sm text-mist/70">
-              Server-side rendered. Data revalidated every 60 seconds.
-            </p>
           </div>
-          <span className="rounded-full bg-slate-grey px-3 py-1 text-xs text-forest-accent w-fit">
-            SSR · revalidate:60
-          </span>
+          <p className="text-sm text-mist/80 mb-3">
+            Crypto prices rooted in nature
+          </p>
+          <div className="flex items-center gap-2 text-xs">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-positive animate-pulse"></span>
+              <span className="text-mist/70">Live</span>
+            </span>
+            <span className="text-mist/50">•</span>
+            <span className="text-mist/70">Updates every 60s</span>
+          </div>
         </header>
 
         <CryptoTable assets={assets} />
